@@ -1,5 +1,5 @@
 <a id="new_button" type="button" ng-href="#/commitment_detail" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar Compromisso</a>
-
+<div id="alert_deleted" ng-show="show_alert" class="alert fade in alert-success">{{alert_msg}}</div>
 <table id="table" ng-if="count_commitment > 0" class="table table-bordered table-striped table-responsive table-hover">          
                 <thead>
                     <tr>                        
@@ -10,7 +10,7 @@
                     </tr>
                 </thead>
           <tbody>
-              <tr ng-repeat="list in commitmentList" ng-click="goToDetail(list.id)">                  
+              <tr style="cursor:pointer" ng-repeat="list in commitmentList" ng-click="goToDetail(list.id)">                  
                   <td>{{list.title}}</td>
                   <td>{{list.begin_date}}</td>
                   <td>{{list.end_date}}</td>      

@@ -2,7 +2,7 @@
 <div id="pageDiv" class="page" ng-controller="commitmentDetailCtrl">
   <form>
    <div id="detailBox">
-    <div ng-if="show_alert" class="alert fade in" ng-class="{'alert-danger' : is_not_saved, 'alert-success' : is_saved}">
+    <div id="alert_detail" ng-if="show_alert" class="alert fade in" ng-class="{'alert-danger' : is_not_saved, 'alert-success' : is_saved}">
       {{alert_field}}
     </div>
       <div >

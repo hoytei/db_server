@@ -25,7 +25,7 @@ body{
   font-size:15px;
 }
 
-#new_button{
+#new_button, #alert_deleted{
   margin-left: 10%;
   margin-top:2%;
 }
@@ -49,6 +49,6 @@ body{
   border: 1px solid red;
 }
 
-.alert{
+#alert_detail{
   margin-top:6%;
 }

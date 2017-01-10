@@ -9,6 +9,7 @@ describe('Tests', function() {
     var save_button = element(by.id('save'));
     var row = element(by.binding('list.title'));
     var delete_button = element(by.css('.btn-delete'));
+    var modal_button = element(by.id('modal_button'));
 
     beforeEach(function() {
     	browser.get('http://localhost/#/');
@@ -144,6 +145,13 @@ describe('Tests', function() {
     save_button.click();
     expect(element(by.binding('alert_field')).getText()).
         toEqual('Salvo!'); 
+  });
+
+   it('should delete with success', function() {    
+     delete_button.click(); 
+     modal_button.click();
+     expect(element(by.binding('alert_msg')).getText()).
+        toEqual('Item deletado com sucesso!'); 
   });
 
 });

@@ -58,28 +58,41 @@
             //abre uma modal para confirmar se deve ser deletado
             $rootScope.modalInstance = $uibModal.open({
               templateUrl: 'views/cancel_modal.html',
-              controller: ModalInstanceCtrl,
-              resolve: {
-               
-              }
+              controller: ModalInstanceCtrl              
             });
 
             $rootScope.modalInstance.result.then(function (result) {
-              //caso seja clicado o "deletar" na modal, o status do objeto selecionado passa para "inactive"
-                item.status = 'inactive'; 
-               $scope.service.save($scope.list, function (result){                    
-                    if(result.data.msg == "success")   
-                      //se retornar o status success é chamada a função inicial
-                      //para buscar os novos dados do banco, deixando de mostrar o que acabou de ficar com o status inactive
-                        $scope.init();               
-                });
+                $scope.deleteItem(item);
             });
           
         };
 
+        $scope.deleteItem = function(item){
+           //caso seja clicado o "deletar" na modal, o status do objeto selecionado passa para "inactive"
+                item.status = 'inactive'; 
+               $scope.service.save(item, function (result){                    
+                    if(result.data.msg == "success"){ 
+                      //se retornar o status success é chamada a função inicial
+                      //para buscar os novos dados do banco, deixando de mostrar o que acabou de ficar com o status inactive
+                        $scope.init();               
+                        $scope.show_alert = true;
+                        $scope.alert_msg = "Item deletado com sucesso!";
+                        setTimeout(function (){
+                           $scope.$apply(function()
+                           {
+                             $scope.show_alert = false;
+                           });
+                        }, 2000);
+                    }
+                });
+
+        }
+
         $scope.init();
         
     };
+
+
 
     function ModalInstanceCtrl($scope, $rootScope) {
 
