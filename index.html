@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html lang="en" data-ng-app="app"  ng-controller="homeCtrl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teste DbServer</title>   
+   
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">   
+    
+  </head>
+  <body>
+    <div id="header"> 
+      <h1>Agenda DbServer</h2>
+    </div>
+    <div id="header_line"></div>
+    <div class="pull-right text-info" id="subtext">
+      <p> Você tem <b>{{count_commitment}}</b> compromissos.</p>   
+    </div>
+      <main ng-view></main>  
+  
+    <script type="application/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/ngMask.min.js"></script>
+    <script src="bower_components/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="scripts/controllers/app.module.js"></script>
+    <script src="scripts/controllers/app.routes.js"></script>   
+    <script src="scripts/controllers/home.controller.js"></script>
+    <script src="scripts/controllers/commitment.detail.controller.js"></script>
+    <script src="scripts/factory/mock.service.js"></script>
+
+  </body>
+</html>

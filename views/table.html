@@ -1,0 +1,20 @@
+<a id="new_button" type="button" ng-href="#/commitment_detail" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar Compromisso</a>
+
+<table id="table" ng-if="count_commitment > 0" class="table table-bordered table-striped table-responsive table-hover">          
+                <thead>
+                    <tr>                        
+                        <th>Título</th>
+                        <th>Data/Horário Início</th>
+                        <th>Data/Horário Término</th> 
+                        <th>Deletar</th>                      
+                    </tr>
+                </thead>
+          <tbody>
+              <tr ng-repeat="list in commitmentList" ng-click="goToDetail(list.id)">                  
+                  <td>{{list.title}}</td>
+                  <td>{{list.begin_date}}</td>
+                  <td>{{list.end_date}}</td>      
+                  <td><button type="button" class="btn btn-xs btn-danger btn-delete" ng-click="openModal(list)">X</button></td>           
+              </tr>
+          </tbody>
+      </table>

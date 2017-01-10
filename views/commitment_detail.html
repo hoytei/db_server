@@ -1,0 +1,110 @@
+
+<div id="pageDiv" class="page" ng-controller="commitmentDetailCtrl">
+  <form>
+   <div id="detailBox">
+    <div ng-if="show_alert" class="alert fade in" ng-class="{'alert-danger' : is_not_saved, 'alert-success' : is_saved}">
+      {{alert_field}}
+    </div>
+      <div >
+        <div class="row">
+          <div  class="col-sm-12">
+              <label>Título(*):</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input 
+                           type="text" 
+                           class="form-control" 
+                           ng-class="{border_red : title_error}"
+                           placeholder=""                           
+                           data-ng-model="title" 
+                    >
+                </div>
+          </div>
+        </div>
+        <div class="row">
+          <div  class="col-sm-6">
+              <label>Data de início(*):</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input 
+                           type="text" 
+                           mask='99/99/9999'
+                           class="date form-control" 
+                           placeholder="" 
+                           ng-class="{border_red : begin_date_error}"
+                           data-ng-model="begin_date" 
+                    >
+                </div>
+          </div>
+          <div  class="col-sm-6">
+              <label>Horário de início(*):</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input 
+                           type="text" 
+                           mask='99:99'
+                           class="time form-control" 
+                           placeholder=""                           
+                           ng-class="{border_red : begin_time_error}"
+                           data-ng-model="begin_time" 
+                    >
+                </div>
+          </div>
+        </div>
+         <div class="row">
+          <div  class="col-sm-6">
+              <label>Data de término(*):</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input
+                           type="text" 
+                           mask='99/99/9999'
+                           class="date form-control" 
+                           placeholder="" 
+                           ng-class="{border_red : end_date_error}"
+                           data-ng-model="end_date" 
+                    >
+                </div>
+          </div>
+          <div  class="col-sm-6">
+              <label>Horário de término:</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input 
+                           type="text" 
+                           mask='99:99'
+                           class="time form-control" 
+                           placeholder="" 
+                           ng-class="{border_red : end_time_error}"
+                           data-ng-model="end_time" 
+                    >
+                </div>
+          </div>
+        </div>
+        <div class="row">
+          <div  class="col-sm-12">
+              <label>Detalhes:</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <textarea
+                           rows="4" cols="50"
+                           type="text" 
+                           class="form-control" 
+                           placeholder="" 
+                           data-ng-model="detail" 
+                    ></textarea>
+                </div>
+          </div>
+        </div>
+      
+
+    <div id="buttons_div">
+        <button class="btn btn-success" id="save" ng-disabled="is_money" name="save" ng-click="verify()">
+            <span class="fa fa-save"></span> Salvar
+        </button>
+       
+        <button class="btn btn-danger"  ng-click="goToHome()">
+            <span class="ti-back-left"></span> Voltar
+        </button>
+    </div>
+  </div>
+   </div>
+  </form>   
+</div>
+
+
+    
