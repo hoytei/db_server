@@ -133,6 +133,32 @@ describe('Tests', function() {
         toEqual('Horário incorreto'); 
   });
 
+    it('should show wrong date error', function() {    
+    new_button.click();
+    title.sendKeys('teste');
+    begin_date.sendKeys(12122016);
+    begin_time.sendKeys(1100);
+    end_date.sendKeys(13202016);
+    end_time.sendKeys(1830);
+    save_button.click();     
+
+    expect(element(by.binding('alert_field')).getText()).
+        toEqual('Data Incorreta'); 
+  });
+
+  it('should show wrong date error again', function() {    
+    new_button.click();
+    title.sendKeys('teste');
+    begin_date.sendKeys(34122016);
+    begin_time.sendKeys(1200);
+    end_date.sendKeys(13122016);
+    end_time.sendKeys(1130);
+    save_button.click();     
+
+    expect(element(by.binding('alert_field')).getText()).
+        toEqual('Data Incorreta'); 
+  });
+
    it('should open delete modal', function() {    
     delete_button.click(); 
     expect(element(by.id('modal_h3')).getText()).

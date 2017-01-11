@@ -62,6 +62,12 @@
                 $scope.is_not_saved = true;
                 $scope.show_alert = true;
                 $scope.canSave = false;
+            }else if(!$scope.verifyIfDateIsCorrect($scope.begin_date)){
+                $scope.alert_field = "Data Incorreta"
+                $scope.begin_date_error = true;
+                $scope.is_not_saved = true;
+                $scope.show_alert = true;
+                $scope.canSave = false;
             }else if(!$scope.isSet($scope.begin_time)){
                 $scope.alert_field = "O campo horário de início é obrigatório"
                 $scope.begin_time_error = true;
@@ -78,6 +84,12 @@
                 $scope.alert_field = "O campo data de término é obrigatório"
                 $scope.is_not_saved = true;
                 $scope.end_date_error = true;
+                $scope.show_alert = true;
+                $scope.canSave = false;
+            }else if(!$scope.verifyIfDateIsCorrect($scope.end_date)){
+                $scope.alert_field = "Data Incorreta"
+                $scope.end_date_error = true;
+                $scope.is_not_saved = true;
                 $scope.show_alert = true;
                 $scope.canSave = false;
             }else if(!$scope.isSet($scope.end_time)){
@@ -105,6 +117,34 @@
             return regexp.test(time)
 
         }
+
+        $scope.verifyIfDateIsCorrect = function(dateString){  
+            // First check for the pattern
+            if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)){ 
+                return false;
+            }
+
+            // Parse the date parts to integers
+            var parts = dateString.split("/");
+            var day = parseInt(parts[0], 10);
+            var month = parseInt(parts[1], 10);
+            var year = parseInt(parts[2], 10);
+
+            // Check the ranges of month and year
+            if(year < 1000 || year > 3000 || month == 0 || month > 12){
+                return false;
+            }
+
+            var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+            // Adjust for leap years
+            if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+                monthLength[1] = 29;
+
+            // Check the range of the day
+           
+            return day > 0 && day <= monthLength[month - 1];
+        };
 
         $scope.save = function(){
            //objeto é criado com as variáveis
